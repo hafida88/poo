@@ -1,6 +1,6 @@
 <?php
 
-class Product3
+abstract class Product4
 {
     private string $title;
     private float $price;
@@ -68,7 +68,48 @@ class Product3
     }
 }
 
-$newProduct = new Product3("carotte", 45, 1);
-var_dump($newProduct);
+class Meuble extends Product4
+{
+    private string $couleur;
 
-echo "<p>" . $newProduct->getTitle() . "</p>";
+    public function setCouleur(string $value)
+    {
+        $this->couleur = $value;
+        return $this;
+    }
+    public function getCouleur()
+    {
+        return $this->couleur;
+    }
+}
+
+class Vetement extends Product4
+{
+    private string $taille;
+
+    public function setTaille($valeur)
+    {
+        $this->taille = $valeur;
+        return $this->taille;
+    }
+
+    public function getTaille()
+    {
+        return $this->taille;
+    }
+}
+
+$commode = new Meuble('Commode', 65, 2);
+$commode->setCouleur('rose');
+
+echo "<pre>";
+var_dump($commode);
+echo "</pre>";
+
+
+$robe = new Vetement('Robe', 120, 1);
+$robe->setTaille('s');
+
+echo "<pre>";
+var_dump($robe);
+echo "</pre>";
